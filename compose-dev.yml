@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/Dockerfile
+    image: naica_django
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    expose:
+      - "9000"
+    command: /start

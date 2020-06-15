@@ -1,0 +1,6 @@
+# Ignore files
+__pycache__/
+.DS_Store
+.idea/
+db.sqlite3
+tmp/
