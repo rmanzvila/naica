@@ -4,13 +4,15 @@ import statistics
 def obtain_median(elements):
     """Function which return medium value"""
     if elements:
-        return statistics.median(elements)
+        return '{0:.2f}'.format(statistics.median(elements))
     return ''
 
 
 def obtain_mean(elements):
     """Function which return arithmetic media"""
-    return statistics.mean(elements)
+    if elements:
+        return '{0:.2f}'.format(statistics.mean(elements))
+    return ''
 
 
 def obtain_mode(elements):
