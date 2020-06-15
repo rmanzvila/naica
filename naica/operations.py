@@ -8,9 +8,9 @@ def obtain_median(elements):
     return ''
 
 
-def obtain_arithmetic_median(elements):
-    """Function which return arithmetic median"""
-    return sum(elements)/len(elements)
+def obtain_mean(elements):
+    """Function which return arithmetic media"""
+    return statistics.mean(elements)
 
 
 def obtain_mode(elements):
@@ -41,6 +41,4 @@ def obtain_variance(elements, total_elements):
     """Function which return variance"""
     if not elements:
         return ''
-    median = obtain_arithmetic_median(elements)
-    variance = sum((xi - median) ** 2 for xi in elements) / total_elements
-    return '{0:.4f}'.format(variance)
+    return '{0:.4f}'.format(statistics.variance(elements))

@@ -41,9 +41,9 @@ def general_operations(polls):
     results['polls'] = polls
     results['counter'] = total_polls
     results['age_median'] = '{0:.2f}'.format(obtain_median(polls.values_list('age', flat=True)))
-    results['age_arithmetic_median'] = '{0:.2f}'.format(obtain_arithmetic_median(polls.values_list('age', flat=True)))
+    results['age_arithmetic_median'] = '{0:.2f}'.format(obtain_mean(polls.values_list('age', flat=True)))
     results['age_mode'] = obtain_mode(polls.values_list('age', flat=True))
-    results['savings_median'] = '{0:.2f}'.format(obtain_arithmetic_median(polls.values_list('savings', flat=True)))
+    results['savings_median'] = '{0:.2f}'.format(obtain_mean(polls.values_list('savings', flat=True)))
 
     results['m_average'] = obtain_average(polls.filter(sex='M').count(), total_polls)
     results['f_average'] = obtain_average(polls.filter(sex='F').count(), total_polls)
