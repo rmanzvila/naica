@@ -41,6 +41,6 @@ def obtain_standart_dev(elements):
 
 def obtain_variance(elements, total_elements):
     """Function which return variance"""
-    if not elements:
+    if not elements or len(elements) < 2:
         return ''
     return '{0:.4f}'.format(statistics.variance(elements))
