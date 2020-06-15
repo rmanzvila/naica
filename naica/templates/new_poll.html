@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-md-8 col-md-offset-2">
+
+        <h2>Nueva encuesta</h2>
+        <form method="POST" class="poll-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-danger">Enviar</button>
+            <a href="/" type="button" class="save btn btn-default">Volver</a>
+        </form>
+    </div>
+{% endblock %}

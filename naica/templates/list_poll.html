@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Dasboard -->
+    <div class="col-md-12">
+        <h1>Dashboard <a href="/new" type="button" class="save btn btn-danger">Nueva encuesta</a></h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>{{ counter }} <small>Encuestas registradas</small></h2>
+
+                <h2>{{ age_median }} <small>Edad media</small></h2>
+                <h2>{{ age_mode }} <small>Edad moda</small></h2>
+
+                <h2>$ {{ savings_median }} <small>Promedio de ahorros</small></h2>
+
+                <hr>
+                <h2>Concentración por sexo</h2>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width: {{ m_average }}">
+                        <span class="sr-only">{{ m_average }} Masculino</span>
+                    </div>
+                    <div class="progress-bar progress-bar-warning progress-bar-striped"
+                         style="width: {{ f_average }}">
+                        <span class="sr-only">{{ f_average }} Femenino</span>
+                    </div>
+                    <div class="progress-bar progress-bar-danger" style="width: {{ o_average }}">
+                        <span class="sr-only">{{ o_average }} Otro</span>
+                    </div>
+                </div>
+
+                <span>{{ m_average }} Masculino</span> <br>
+                <span>{{ m_average }} Femenino</span> <br>
+                <span>{{ o_average }} Otro</span>
+
+            </div>
+            <div class="col-md-6">
+                <h2>Metas financieras</h2>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0"
+                         aria-valuemax="100" style="width: {{ financial_average }}">
+                    </div>
+                </div>
+
+                <p> Del <strong>{{ financial_average }}</strong> que reporta tener metas financieras, se puede encontrar
+                    la siguiente
+                    distribución por sexo: </p>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width: {{ financial_m_average }}">
+                    </div>
+                    <div class="progress-bar progress-bar-warning progress-bar-striped"
+                         style="width: {{ financial_f_average }}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" style="width: {{ financial_o_average }}">
+                    </div>
+                </div>
+
+                <span>{{ financial_m_average }} Masculino</span> <br>
+                <span>{{ financial_f_average }} Femenino</span> <br>
+                <span>{{ financial_o_average }} Otro</span> <br> <br>
+
+                <p>La desviación estandar para la muestra conformada por aquellos que <strong>solo</strong> indicaron
+                    tener metas financieras corresponde a <strong> {{ financial_savings_stdev }}</strong>, mientras que la variancia
+                    de la cantidad de ahorro es de <strong>{{ financial_variance }}</strong></p>
+
+                <h2>Conocimiento de inversiones</h2>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0"
+                         aria-valuemax="100" style="width: {{ investment_average }}">
+                    </div>
+                </div>
+                <p>El <strong>{{ investment_average }} </strong> reporta tener conocimientos sobre inversiones. Asimismo,
+                se puede encontrar la siguiente distribución por sexo:</p>
+
+
+                <br>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width: {{ investment_m_average }}">
+                    </div>
+                    <div class="progress-bar progress-bar-warning progress-bar-striped"
+                         style="width: {{ investment_f_average }}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" style="width: {{ investment_o_average }}">
+                    </div>
+                </div>
+
+                <span>{{ investment_m_average }} Masculino</span> <br>
+                <span>{{ investment_f_average }} Femenino</span> <br>
+                <span>{{ investment_o_average }} Otro</span>
+                <br>
+                <br>
+                <p>La desviación estandar para la muestra conformada por aquellos que <strong>solo</strong> indicaron
+                    tener conocimientos sobre inversiones corresponde a <strong> {{ investment_savings_stdev }}</strong>, mientras que la variancia
+                    de la cantidad de ahorro es de <strong>{{ investment_variance }}</strong></p>
+
+            </div>
+        </div>
+        <hr>
+
+
+    </div>
+
+    <!-- Table -->
+    <div class="col-md-12">
+        <h1>Resultados <a href="/new" type="button" class="save btn btn-danger">Nueva encuesta</a></h1>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Sexo</th>
+                <th>Edad</th>
+                <th>Metas financieras</th>
+                <th>Ahorros</th>
+                <th>Conocimiento de inversiones</th>
+            </tr>
+            {% for poll in polls %}
+                <tr>
+                    <td>{{ poll.id }}</td>
+                    <td>{{ poll.sex }}</td>
+                    <td>{{ poll.age }}</td>
+                    <td>{{ poll.financial_goals }}</td>
+                    <td>{{ poll.savings }}</td>
+                    <td>{{ poll.investment_knowledge }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
